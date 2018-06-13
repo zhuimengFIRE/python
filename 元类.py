@@ -1,6 +1,7 @@
 
 # 类也是对象
 class Person(object):
+    @staticmethod
     def out(self):
         print("---out---")
     pass
