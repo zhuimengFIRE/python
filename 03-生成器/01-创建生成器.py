@@ -6,7 +6,7 @@ print(next(a))
 print(next(a))
 print(next(a))
 print(next(a))
-print(next(a))
+print(next(a)) # 等价于print(a.__next__())
 
 #for x in a:
 #    print(x)
