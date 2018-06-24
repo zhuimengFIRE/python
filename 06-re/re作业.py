@@ -7,8 +7,8 @@ import re
 
 # 找出user@test.com
 string = 'user<user@test.com>'
-ret = re.search('<(.+)>',string)
-ret1 = re.findall(r'<([^>]+)',string)
+ret = re.search('<(.+)>', string)
+ret1 = re.findall(r'<([^>]+)', string)
 print(ret.group(1))
 print(ret1[0])
 
@@ -29,9 +29,12 @@ print(ret1[0])
 # http://www.fincm.com/
 
 
+def test(url):
+    return re.sub(r'(http://.+?/).*', lambda x: x.group(1), url)
 
 
-
+ret = test('http://www.interoem.com/messageinfo.asp?id=35')
+print(ret)
 
 # 2. 找出单词
 # 有一句英文如下：
@@ -40,5 +43,6 @@ print(ret1[0])
 #
 # 查找所有的单词
 
-word = re.split(r' ','hello world ha ha')
+
+word = re.split(r' +', 'hello  world ha ha')
 print(word)
