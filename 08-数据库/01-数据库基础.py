@@ -7,7 +7,7 @@
 import pymysql
 
 # 打开数据库连接
-db = pymysql.connect('10.211.55.3', 'root', '', 'student')
+db = pymysql.connect('10.211.55.3', 'root', 'chaoer1314', 'student')
 
 # 使用cursor()方法获取操作游标
 cursor = db.cursor()
