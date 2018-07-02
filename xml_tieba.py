@@ -7,10 +7,11 @@ import urllib
 import urllib2
 from lxml import etree
 
+
 def loadPage(url):
-    header = {"User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) "
+    header = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) "
                            "Chrome/67.0.3396.99 Safari/537.36"}
-    request = urllib2.Request(url,headers=header)
+    request = urllib2.Request(url, headers=header)
     respone = urllib2.urlopen(request)
     html = respone.read()
 
@@ -18,11 +19,11 @@ def loadPage(url):
     content = etree.HTML(html)
     print(content)
     # 返回所有匹配后的列表集合
-    link_list = content.xpath('//div[@class="t_con cleafix"]/div/div/div/a/@href')
+    link_list = content.xpath('//div[@class="threadlist_lz clearfix"]/div/a/@href')
     for link in link_list:
         fulllink = "http://tieba.baidu.com"+link
         print(fulllink)
-        loadImage(fulllink)
+        # loadImage(fulllink)
 
 
 # 取出每个帖子里面的图片链接
@@ -39,6 +40,7 @@ def loadImage(link):
         fulllink = "http://tieba.baidu.com"+link
         writeImage(fulllink)
 
+
 def writeImage(link):
     header = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) "
                             "Chrome/67.0.3396.99 Safari/537.36"}
@@ -48,6 +50,7 @@ def writeImage(link):
     with open("/Users/playboy/Desktop/heima/image/"+filename,'w') as f:
         f.write(image)
     print("已成功下载图片" + filename)
+
 
 def tiebaSpaider(name, beginPage, endPage):
     url = "http://tieba.baidu.com/f?"
